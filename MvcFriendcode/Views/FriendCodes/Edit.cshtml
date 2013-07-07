@@ -15,9 +15,18 @@
 
 @if (Context.User.Identity.IsAuthenticated)
 {
+    string dUser = Html.DisplayFor(model => model.User).ToString();
     
-using (Html.BeginForm())
-{
+    if (dUser != HttpContext.Current.User.Identity.Name)
+    {
+        <h3>This user isn't you!</h3>
+    }
+
+    if (dUser == HttpContext.Current.User.Identity.Name)
+    {
+
+        using (Html.BeginForm())
+        {
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -61,7 +70,8 @@ using (Html.BeginForm())
             <input type="submit" value="Save" />
         </p>
     </fieldset>
-}
+        }
+    }
 }
 
 <div>

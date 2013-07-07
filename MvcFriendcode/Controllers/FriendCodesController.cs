@@ -39,7 +39,9 @@ namespace MvcFriendcode.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var u = new FriendCode();
+
+            return View(u);
         }
 
         //

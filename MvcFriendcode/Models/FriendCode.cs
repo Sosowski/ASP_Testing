@@ -9,6 +9,13 @@ namespace MvcFriendcode.Models
 {
     public class FriendCode
     {
+        public FriendCode()
+        {
+            User = HttpContext.Current.User.Identity.Name;
+            DateAdded = System.DateTime.Now;
+            Rating = 5;
+        }
+
         public int ID { get; set; }
 
         [Required]

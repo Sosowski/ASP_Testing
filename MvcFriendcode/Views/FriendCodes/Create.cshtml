@@ -6,19 +6,24 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@if (!Context.User.Identity.IsAuthenticated)
+{
+    <h3>You are not logged in!</h3>
+    <h4>Log in to delete entries.</h4>
+    <h5>Also, stop trying to sneak around the restrictions, you weasel.</h5>
+}
+
+@if (Context.User.Identity.IsAuthenticated)
+{
+
+using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>FriendCode</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.User)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.User)
-            @Html.ValidationMessageFor(model => model.User)
-        </div>
+        
+        <h3>You only need to enter your friendcode!</h3>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Code)
@@ -29,10 +34,20 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.User)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.User, new 
+        { disabled = "disabled", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.User)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.DateAdded)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateAdded)
+            @Html.TextBoxFor(model => model.DateAdded, new 
+        { disabled = "disabled", @readonly = "readonly" })
             @Html.ValidationMessageFor(model => model.DateAdded)
         </div>
         
@@ -40,7 +55,8 @@
             @Html.LabelFor(model => model.Rating)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Rating)
+            @Html.TextBoxFor(model => model.Rating, new 
+        { disabled = "disabled", @readonly = "readonly" })
             @Html.ValidationMessageFor(model => model.Rating)
         </div>
 
@@ -48,6 +64,7 @@
             <input type="submit" value="Create" />
         </p>
     </fieldset>
+}
 }
 
 <div>

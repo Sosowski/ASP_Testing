@@ -10,13 +10,14 @@
 {
 <p>
     @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Search Users", "SearchIndex")
 </p>
 }
 
 @if (!Context.User.Identity.IsAuthenticated)
 {
 <p>
-    Register an account if you wish to add your name to this list!
+    Register an account if you wish to add your name to this list or search through users!
 </p>
 }
 <table>
@@ -37,6 +38,7 @@
     </tr>
 
 @foreach (var item in Model) {
+    string cUser = Html.DisplayFor(modelItem => item.User).ToString();
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.User)
@@ -52,11 +54,20 @@
         </td>
 
         @if(Context.User.Identity.IsAuthenticated) {
+            if (cUser != HttpContext.Current.User.Identity.Name)
+            {
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID })
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
         </td>
+            }
+            if (cUser == HttpContext.Current.User.Identity.Name)
+            {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+        </td>
+            }
         }
         
         @if (!Context.User.Identity.IsAuthenticated)
