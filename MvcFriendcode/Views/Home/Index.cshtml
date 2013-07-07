@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                This section of the site contains all projects built using ASP.NET in C#. All projects
+                contained within were created to learn the language, <mark>and do NOT contain actual information.</mark>
+                Projects will likely require you to create an account to perform any of the functions, done to test
+                security and stability of data. If you are looking through these projects, <mark>please create an account
+                using a username and password not similar to anything else you use.</mark> While the data for this account
+                will be encryped and placed into a secure server, I don't wish for your accounts to be hijacked
+                because you wanted to evaluate someone's work.
+            </p>
+        </div>
+    </section>
+}
+<h3>Here are links to the projects currently on this section of the site:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Friendcodes</h5>
+        A database viewer allowing users to post a friendcode for a nintendo platform
+        and rate other users. They can also delete and edit their information, and their information alone.
+        <a href="/Friendcodes">View the project</a>
+    </li>
+
+    <li class="two">
+        <h5>Add NuGet packages and jump-start your coding</h5>
+        NuGet makes it easy to install and update free libraries and tools.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
+    </li>
+
+    <li class="three">
+        <h5>Find Web Hosting</h5>
+        You can easily find a web hosting company that offers the right mix of features
+        and price for your applications.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
+    </li>
+</ol>

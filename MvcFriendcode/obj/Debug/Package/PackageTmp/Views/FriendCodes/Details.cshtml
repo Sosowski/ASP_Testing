@@ -1,0 +1,52 @@
+﻿@model MvcFriendcode.Models.FriendCode
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FriendCode</legend>
+
+    <div class="display-label">
+         <h3>User</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User)
+    </div>
+
+    <div class="display-label">
+         <h3>FriendCode</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Code)
+    </div>
+
+    <div class="display-label">
+         <h3>Added on</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateAdded)
+    </div>
+    <div class="display-label">
+        <h3>User rating</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rating)
+    </div>
+</fieldset>
+@if (Context.User.Identity.IsAuthenticated)
+{
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+}
+
+@if (!Context.User.Identity.IsAuthenticated)
+{
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+}
